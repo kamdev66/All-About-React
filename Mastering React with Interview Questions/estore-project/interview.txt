@@ -1,0 +1,293 @@
+//Mastering React Interview questions 
+
+1. React is declarative
+:- with declarative, we just tell what to do and in Imperative, we also tell how to do.
+:- with React,we create a component and tell that- how we want the DOM to be and rest is handles by react
+
+2. Babel acts as a compiler/transpiler - helping to write the HTML inside javascript
+
+3. HTML written inside javascript is called as the JSX.
+
+4. what is Props:- the data passed as an attribute in the component tag- that is passed as an 'Object Literal' in the function.
+
+5. For react boiler Plate or Scaffolding- type npx create-react-app ./
+
+6. create-react-app is a CLI helps to create prerequisite environment for a react project
+
+7. Destructuring means getting individual pieces from a data structure like arrays or object literals.
+const {name,age}=props;
+
+8. props are immutable,we cannot change props.
+
+9. useState() has a facility to create a state in Functional component.
+useState() always returns one array with two elements:- 
+1. arr[0]=state value -> value which we have given of the state
+2. arr[1]=setter function ->  a function which allows you to change the state value
+const [stateValue,setter function]=useStae(0)
+
+10. State basically contains the data which changes & it is the data that user can see
+
+11. lazy initial state:- 
+
+function initialState(){
+    console.log("expensive process:- "+Datenow());
+    return 0;
+}
+export default function App(){
+    const[cnt,setCount]=useState(()=>initialState());
+}
+
+12. In event handling, if you need to pass parameters in the function,arrow function is easiest approach
+onClick={()=>changeCounter('+')}
+
+13. the React.component needs to be extended to create a class component
+
+14. render() is a component lifecycle method which must be defined in all class component
+
+15. render() is needed when you have a clas component so whatever and whenever state are updated,this method will be called.
+
+16. render() is containing the jsx which is the user interface.
+
+17. render() gets executed when the component was loaded
+
+18. render() gets executed when there is an update in the component
+
+19. when we make api end point calls , we also write that code in ComponentDidMount().
+
+20. ComponentWillUnmount() is executed when the component is removed from the DOM tree.
+
+21. The Component Lifecycle:- 4 methods
+    1. MOUNTING:- 
+       a.constructor()
+       b.static getDerivedStateFromProps()
+       c.render()
+       d.ComponentDidMount()
+    
+    2. UPDATING:- 
+       a. static getDerivedStateFromProps()
+       b. shouldComponentUpdate() :- if this method is placed, and doesn't return true then it will stop re-rendering
+       c. render()
+       d. getSnapshotBeforeUpdate()
+       e. ComponentDidUpdate
+
+    3. UNMOUNTING:- 
+       a. ComponentWillUnmount
+
+    4. ERROR HANDLING:- 
+       a. componentDidCatch()
+
+
+22. The main purpoose of lifecycle methods is to execute pieces of codes depending on the sequence.
+
+23. useEffect() hook is a hook that is used for lifecycle method in function component.
+
+24. useEffect() hook is called everytime when the component is rendered or re-rendered.
+
+25. Mutations ,subscriptions,timers,logging are not allowed inside the main body of a function component(inside return)
+
+26. Refs provides a way to access DOM nodes or React elements created in the render method.
+
+27. when we need to use ref:- 
+    a. Managing focus,text selection,or media playback
+    b. Trigerring animations
+    c. Integrating with third party DOM libraries.
+
+28. when it comes to referring directly the element- we use the "ref" .
+
+29. The ref,createRef() or useRef() are used to get the reference of the elements.
+
+30. React.memo() and useCallback() concept is about implementing performance optimization.
+
+31. Memoization is a term used in computing for optimizing the performance by storing the results of expensive functions and returning the cached result.
+
+32. useMemo() and useCallback() do the same job, but syntax are different.
+
+33. useCallback(fn,dependencies) is equivalent to useMemo(()=>fn,dependencies)
+
+34. Key :- React needs to identify each rendered item with an "id" when the item needs to be added,changed or removed.
+
+35. the best way to pick a key is use to use a string that uniquely identifies a list item among its siblings.
+
+36. <Demo value /> here, value is props, if there is no value given to the attribute, props will default to true
+if you want to check:- props.value.toString() in child component
+
+37. Passing attributes with the spread operator is a fantastic short way when you are willing to pass object to props.
+e.g:- <ParentComponent {...product}/>
+
+38.  How do you access the content of the component?
+:- with the help of props.children property
+
+39. React.Fragment allows us to wrap the children without adding extra nodes(like <div> tag) to the DOM.
+
+40. Logical && operator is used with {} as we are writing the javascript expression.
+     Syntax:- {condition && HTML elements}, if the condition is true,then HTML elements will be rendered.
+
+41. Logical && is useful in single line component rendering.
+
+42. To craete a single page application in react, we have to use react router library.
+
+43.MPAs reload the HTML pages, SPAs loads the page once and then only it transmits the data between client and server.
+
+44. BrowserRouter component holds the entire application.
+
+45. Use the Route package to configure the routes.
+
+46. Link or NavLink is used in the menu to show the links.
+
+47. useLocation returns the current URL details in the object returned.
+
+48. There are 3 main steps to setup Context API:- 
+     1. Create Context
+     2. Provider
+     3. Consumer
+
+    step1:-  To create a context, we will use React.createContext() method.
+     syntax:- const MyContext= React.createContext(defaultValue); here, MyContext becomes global context object
+  here, the value passed in createContext is the initial or default value & we can later add or manipulate.
+  
+    step2:- Provider
+    const MyContext= React.createContext(0)
+    <MyContext.Provider value={value}>
+      <App/>
+    </MyContext.Provider>
+Provider is a react component available with the context object & we need to wrap around all the components who want to refer to the context. i.e.<App/>
+ now, we can use Consumer.
+
+49. MyContext.Consumer is a react component that is subscribed to context changes. It requires function as a child,the func. receives current context value.
+
+50. In newer React or hooks, React offers the useContext() hook,which is really easy to use.
+syntax:- const value=useContext(MyContext)
+
+51. we use useContext at the place of Consumer.bcoz in consumer, hame child function bna kar usme code krna padta tha.
+
+52. useContext takes the context as parameter & it returns the context value.
+
+53. Redux is an open-source JavaScript library for managing and centralizing application state.
+
+54. Redux Toolkit is a very modern and enhanced library which makes the redux development very easy and more organized.
+for using toolkit in redux:- npm i @reduxjs/toolkit react-redux
+
+55. why will you choose redux toolkit?
+:- bcoz while using the redux, there were various complications like, configuring the store & having a lot of libraries etc.
+
+56. A Slice in redux toolkit contains the initialState data, reducers/functions() & actions.
+const productSlice=createSlice({
+    name:'product',
+    initialState:initData,
+    reducers:{
+        purchase:(state,action)=>{
+            //change state
+        },
+        deleteItem:(state,action)=>{
+            //change state
+        }
+    }
+})
+export const {purchase,deleteItem}=productSlice.actions;
+or, export default productSlice.reducer;
+
+57. configureStore() in RTK will create the store and combineReducers for us.
+const store=configureStore({
+    reducer:{                     //here, reducer is the key
+        pr:productReducer,
+        lr:loginReducer
+    }
+})
+
+58. fetch API is a better,faster and more efficient way to deal with http or network requests.
+before es6 , we use XMLHTTP requests
+after es6, we use fetch API
+syntax:- const resPromise=fetch(url,[optional object]);    //fetch API bydefault makes a GET request,in case if you want to make POST request,then the optionalobject parameter can be used
+eg:- const response=fetch('http://URL://',{
+    method:'POST',
+    headers:{
+        'Content-Type':'application/json;charset=utf-8'
+    },
+    body:JSON.stringify(data);
+})
+or,
+fetch('https://jsonplaceholder.com/users)     //V.V.I
+.then(res=>res.json())
+.then(data=>console.log(data));
+
+
+59. Explain the fetch API functionality:-
+-> fetch API helps in makings AJAX called
+-> Add data- perform CRUD operations
+-> Downloading/uploading files - dealing with images etc.
+
+60. When it comes to displaying the fetched data from the server,you have to use the state
+const [users,setUsers]=useState([])
+const fetchUsers=()=>{
+    fetch('https://jsonplaceholder.com/users)    
+    .then(res=>res.json())
+    .then(json=>{
+        setUsers(json)
+    });
+}
+
+61. error: users.map is not a function, here, react tries to render the users data which is actually not there.
+
+62. ERROR BOUNDARY:- A JavaScript error in a part of the UI shouldn’t break the whole app. To solve this problem for React users, React 16 introduces a new concept of an “error boundary”.
+
+:- Error boundaries are React components that catch JavaScript errors anywhere in their child component tree, log those errors, and display a fallback UI instead of the component tree that crashed.
+
+:- Error boundaries catch errors during rendering, in lifecycle methods, and in constructors of the whole tree.
+
+:- error boundaries only catch errors in the components below them in the tree
+
+:- note:- Error boundaries do not catch errors for:
+         Event handlers (learn more)
+         Asynchronous code (e.g. setTimeout or requestAnimationFrame callbacks)
+         Server side rendering
+         Errors thrown in the error boundary itself (rather than its children)
+
+
+:- A class component becomes an error boundary if it defines either (or both) of the lifecycle methods static getDerivedStateFromError() or componentDidCatch(). Use static getDerivedStateFromError() to render a fallback UI after an error has been thrown. Use componentDidCatch() to log error information.
+
+
+-----------------------TESTING--------------------
+:- Testing is one of the most important entity in modern development.
+
+:- Testing can be in two categories:- 
+   1. Manual Testing
+   2. Automated Testing
+
+Manual Testing:- It means testing a program as a developer & check the functionality from developer's perspective or tester or as a end user(coder).
+
+Automated Testing:- 
+
+There are 3 main categories of automated testing:-
+  1. Unit Tests
+  2. Integration Tests
+  3. End to End(e2e) Tests
+
+:- Unit Test is all about checking individual functions, components or basically units of code.
+
+:- Integration Tests comes in picture when code pieces,units or components are integrated & together how do they work.
+
+:- e2e Tests is used to check the entire application & it's flow.
+
+we will use Jest library with react, other two well known testing libraries are Jasmine and mocha.
+
+:- To install the library:- npm i --save-dev jest
+we also need an assertion tool & mocking library& a test runner
+
+:- Jest is a powerful library with all the tools available in it i.e, assertion,mocking,test runner etc.
+
+:- Jest can be used for Javascript apps like, Node.js application for server
+:- Enzyme is built for React application only.
+
+:- jest alone can be used with React applications but Enzyme gives more functionality while dealing with components or basically the UI.
+
+Ques:- Can we use Enzyme alone?
+:- Enzyme can be used alone without jest but jest provides test runner for writing tests.so commonly, Jest and Enzyme are used together for better react test automations.
+
+:- if Component file is app.js then testing file will be app.test.js.
+
+Ques:- What is TDD or Test Driven Development?
+:- If you have a product component to do then the component testing is written first with all the validations, then you keep on building the component product and it will keep on checking the test.
+
+
+
+

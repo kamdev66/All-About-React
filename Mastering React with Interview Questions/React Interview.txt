@@ -1,0 +1,94 @@
+1. What is React?
+:- React is a front-end and open-source javascript library which is useful in developing single-page user interfaces. Under the hood,React uses Virtual DOM.
+It follows the component-based approach.Components make your code more predictable and easier to debug.
+React will efficiently update and render just the right components when your data changes.
+
+2. What is the DOM?
+:- DOM stands Document Object Model.The DOM represents an HTML document with a logical tree structure.
+Each branch of the tree ends in a node, and each node contains objects.
+
+3. What is Virtual DOM?
+:- React keeps a lightweight representation of the Real DOM in the memory , is known as virtual DOM.
+when the state of an object changes, the virtual DOM changes only that object in the real DOM,rather than 
+updating all the objects.
+
+4. what are the differences between virtual and real DOM?
+:- Comparison                   Real DOM                             Virtual DOM
+--------------------------------------------------------------------------------------------
+1. Speed                  Slow                                       Faster
+2. Memory                 Too much memory wasted                     No memory wastage
+3. DOM manipulation       very expensive                             very easy
+4. updation               Can directly update HTML                   Can't directly update HTML 
+5. Creation               creates a new DOM if element updates       updates the JSX if element updates
+
+5. When to use class component over a function component?
+:- It is always recommended to use functional component ,unless you need a react functionality whose
+function component equivalent is not present yet,like Error Boundaries.
+
+6. How to pass data from one component to another component?
+:- Parent to child:- with the help of props, we can send data from a parent to child component.
+
+:- child to parent:- 1. create a callback in the parent component which takes in the data needed.
+                     2. pass this callback as a props to the child component
+                     3. send data from the child component using the callback.
+
+7. What are Pure Components?
+:- React.PureComponent is exactly the same as React.component except that it handles the shouldComponentUpdate() method for you.
+
+8. What is Controlled Components?
+:- Controlled component is one that takes its current value through props and notifies changes through callbacks like onChange.
+Callback is controlled by a parent component which manages its own state and passes the new values as props
+to the controlled component.
+you could also  call this a "dumb component".
+
+8. What is uncontrolled Component?
+:- Uncontrolled Component is the one that store its own state internally.
+'ref' is used to query the DOM to find its current value when you need it.
+You could also call this a 'Smart component'.
+
+9. Differentiate Component and Container?
+:- Component is a class or function component that describes the presentational part of your application.
+The small and reusable pieces of code are called 'Components'.
+
+:- Container is an informal term for a component that is connected to redux store.
+
+10. What is State in React?
+:- State is the brain of our application.
+The state is a built-in react object that is used to contain data or information about the component.
+The state in a component can change over time, and whenever it changes, the component gets re-rendered.
+
+11. Should we update the state directly?
+:-  If you try to update the state directly then it won't re-render the component.we must use setState
+to ensure proper re-rendering of the components.
+
+12. What are  Props?
+:-  Props are short for properties.
+Props provide a way to pass data from one component to another component.
+
+13. Difference between State and Props:-
+ :- Comparison                   State                           Props
+--------------------------------------------------------------------------------------------
+1. Mutability                  Is mutable                           are immutable
+2. Use                    holds information about the                Allow to pass data from one
+                            components .                             component to other.
+3. child component        child components cannot access            child component can access
+
+
+14. What is JSX?
+:-  JSX stands for Javascript XML. It allows us to write HTML in react.
+:- Browsers can't understand jSX.It is transpiled to regular javascript by tools like:-babel before given to browsers.
+:- Without using JSX,we would have to create elememts using 'React.createElement'.
+
+15. What are react features? or why react is so popular?
+:- JSX:- JSX is a syntax extention to javascript.
+   Virtual DOM:- a lightweight representation of the Real DOM in the memory.
+   High performance:- React updates only those components that have changed rather than updating all the components 
+   Components:- Component are the building block of any react application.
+   SEO friendly:- It also allows server-side rendering,which boosts the SEO of an app.
+   Huge ecosystem:- Freedom to choose the tools,libraries,and architecture for developing an app.
+
+16. What are the limitations of react?
+:- 
+
+
+   

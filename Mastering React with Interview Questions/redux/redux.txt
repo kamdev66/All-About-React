@@ -1,0 +1,52 @@
+1. Redux is an open-source JavaScript library for managing and centralizing application state.
+
+2. when we are working with redux ,then we need to install react-redux as well
+npm install --save redux react-redux.
+
+Step for redux application:-
+
+step1:- Create the Global store & Reducer
+const data={
+    products:[
+        {pName:'Apple',price:20},
+        {pName:'Banana',price:3},
+        {pName:'Orange',price:10},
+        {pName:'Grapes',price:8}
+    ],
+    cart:[],
+    total:0
+}
+
+step2:- Use the <Provider> to Provide the store data.
+Note:- Generally for making global,we wrap the <App/> component with provider.
+<Provider store={store}>
+<App/>
+</Provider>
+
+The <Provider/> component makes the Redux store available to any nested components that need to access the Redux store.
+The <Provider/> component takes the store attribute where we have to pass the global store object we created.
+
+step3:- Access the store data at component level.
+we can use useSelector,useStore or {connect()-> for class component} for access the data at the component level.
+The useSelector() will get the specific data instead of entire store access.
+Syntax:- const products=useSelector((state)=>state.products)
+
+step4:- Dispatch action if there are events
+dispatch({type:'ADD'})
+dispatch({type:'ADD',payLoad:{}})
+
+:- whenever there is an event, you have to write that event inside the reducer function.
+
+:- the data which you pass with the dispatch is called as "payLoad".
+
+:- To create a global store,i will use createStore() method of redux.
+const store=createStore(reducer);
+It returns the store object i.e. the global state
+here, reducer is the name of a function which will act as reducer
+
+Remember:- A reducer function becomes an actual reducer when you pass it as an argument inside createStore() method.
+
+react-redux is used to connect the react app and global store.
+
+useDispatch() hook returns a reference to the dispatch function from the redux store.
+
