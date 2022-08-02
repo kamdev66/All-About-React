@@ -1,0 +1,9 @@
+:- Higher Order Component is a pattern where a function takes a component as an argument and returns a new Component.
+It looks like this:-
+const NewComponent=higherOrderComponent(originalComponent)
+const EnhancedComponent=higherOrderComponent(originalComponent)
+
+
+Why we use Higher Order Components?
+:- To share common functionality between components.
+

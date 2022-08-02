@@ -1,0 +1,18 @@
+Error Boundary has two lifecycle methods:-
+1.static getDerivedStateFromError(error)
+2.componentDidCatch(error,info)
+
+:-Error Boundary:-
+:- A class component that implements either one or both of the lifecycle methods getDerivedStateFromError or componentDidCatch becomes an error boundary.
+:- getDerivedStateFromError method is used to render a fallback UI after an error is thrown and the componentDidCatch method is used to log the error information.
+
+in example:- 
+step1:- create ErrComp
+step:- craete ErrCompParent
+step3:- create ErrorBoundary
+ErrorBoundary se wrap krna hai elements ko:-
+<ErrorBoundary>
+        <ErrComp heroName='Batman'/>
+        <ErrComp heroName='Superman'/>
+        <ErrComp heroName='Joker'/>
+</ErrorBoundary>

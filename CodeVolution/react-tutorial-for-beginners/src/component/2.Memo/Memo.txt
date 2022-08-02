@@ -1,0 +1,4 @@
+:- Just like, we use Pure Component in class Component, we use Memo in Functional Component.
+
+:- Syntax of Memo:-
+export default React.memo(ComponentName);

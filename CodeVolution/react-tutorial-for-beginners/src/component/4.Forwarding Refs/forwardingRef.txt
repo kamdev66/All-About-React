@@ -1,0 +1,33 @@
+:-Ref Forwarding is a technique for automatically passing a ref through a component to one of its children.
+
+There are 4 simple steps:-
+step1:- create a ref in the parent component
+constructor(props) {
+      super(props)
+     this.inputRef=React.createRef(); 
+}
+
+step2:-attach the ref to the child component using the ref attribute
+<ForwardRefInput ref={this.inputRef}/>
+
+step3:- we need to forward this ref to the input element in the child component.refForwarding can be achieved using the forwardRef() method from the react library. 
+const ForwardRefInput = React.forwardRef((props,ref) => {
+  return (
+    <div>
+      <input type="text" ref={ref}/>
+    </div>
+  );
+});
+
+Note:-every functional component receives props as a parameter,when a component is passed as a parameter to the createRef() method,it also receives the ref attribute as a second parameter.
+
+:- we can use this ref parameter and pass it as a value to the ref attribute on the native input element.
+like these, <input type="text" ref={ref} />
+
+
+step4:-we will define clickhandler.
+<button onClick={this.clickHander}>Focus Input</button>
+then,
+clickHander=()=>{
+        this.inputRef.current.focus();
+}

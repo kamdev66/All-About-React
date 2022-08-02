@@ -1,0 +1,14 @@
+
+
+step1:- import  axios from 'axios';
+
+step2:- create a state property which will store the list of post.
+constructor(props) {
+      super(props)
+    
+      this.state = {
+         posts:[]
+      }
+}
+
+step3:- we are going to use 'axios' to make a get request 

@@ -1,0 +1,35 @@
+:- Context Provides a way to pass data through the component tree without having to pass props down manually at every level.
+
+:-There are 3 steps of using Context:-
+1. Create the Context:- create a new file.within the file ,we will use createContext() method from react to create the user context.
+   :- every context object created using the create context method comes with a Provider and a Consumer
+
+
+import React from "react";
+const UserContext=React.createContext()
+const UserProvider=UserContext.Provider
+const UserConsumer=UserContext.Consumer
+export {UserConsumer,UserProvider}
+
+
+2. Provide a Context value:-The place where we provide is important because only the descendant component can use it.
+In our program,best place is Starting component(Jo sbka ancestor hai)
+:- The way we provide value by using "value" attribute on the Provider component.
+e.g:- <UserProvider value="Kamdev">
+        <ComponentA/>
+        </UserProvider>
+
+
+3. Consume the Context value:- Now,we need to consume the "value" in desired Component.
+:- To consume the value , we need Consumer Component.
+:- we need to start with curly braces and include an arrow function,The function gets the UserContext value .
+<UserConsumer>
+            {
+                (username)=>{
+                    return <h2>Hello {username}</h2>
+                }
+            }
+</UserConsumer>
+
+
+Note:- we can set default value to the context. like:- const UserContext=React.createContext("DSA n DEV") ->jeb ye krenge to UserProvider ko remove krna padega

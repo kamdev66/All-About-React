@@ -1,0 +1,25 @@
+:- react portal provides a way to render children into a DOM node that exists outside the DOM hierarchy of the parent component.
+
+step1:-Add a DOM node that falls outside the root element.
+In index.html,right below the root element,we will add another div tag with id="portal-root".
+e.g:-<div id="portal-root"></div>
+
+
+step2:-we will create a new component  like:-PortalDemo.js
+
+step3:- we will use reactDOM.createPortal() method to insert this component under the portal-root node.
+:- import reactDOM package in PortalDemo,like:- import  ReactDOM  from 'react-dom'
+:- createPortal() method takes two parameters,first is JSX that we want to render,and the second is DOM node to mount the element on to.(like:- document.getElementById('portal-root'))
+
+import  ReactDOM  from 'react-dom'
+
+function PortalDemo() {
+  return ReactDOM.createPortal(
+        <h1>Portals Demo</h1>,
+        document.getElementById('portal-root')
+    
+  )
+}
+
+
+Note:-In your react app,even though all the components are children to the app component and the app component is mounted onto the root DOM node,it is possible to break away from that and mount on any DOM node that you wish to using react portals. 
