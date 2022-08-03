@@ -15,5 +15,108 @@ Hooks:- Hooks are new feature addition in react version 16.8 which allow you to 
  It is a close replacement for componentDidMount(),componentDidUpdate() and componentWillUnmount().
 :- useEffect runs after every Render.
 
+-----------------------------------------------------------------------------------
+
+3. useContext():-useContext provides a way to pass data through the component tree without having to pass props down manually at every level.
+
+:- There are 3 steps :-
+step1:- create a context 
+eg::-const UserContext=React.createContext()
+
+step2:- we need to provide this context with a value and the provider must wrap the children component for the value to be available
+<UserContext.Provider value="Kamdev Kumar">
+    <CompoA/>
+</UserContext.Provider>
+
+step3:- Consume the context value
+:- we can also use context api,but when we want to pass multiple values,code readability is very bad.
+That's why we use useContext hook for consume the value
+
+3 steps to consume the value:-
+step1:- import useContext 
+step2:- import necessary context eg:-import { UserContext,ChannelContext} from "./Starter";
+step3:- call the useContext function passing in the context as its argument.
+:- useContext() returns the context values
+const user=useContext(UserContext)
+const channel=useContext(ChannelContext) 
+Now,we can use the user and channel values in the component.
+
+--------------------------------------------------------------------------------------------
+
+4. useReducer():- useReducer is a hook that is used for state management.
+It is an alternative of useState.
+useState is built using useReducer.
+:- Just like other hook,useReducer is also a function
+
+:------reduce in javascript                     vs                 useReducer in React--------------
+1. array.reduce(reducer,initialValue)                            1. useReducer(reducer,initialState)
+2. singleValue=reducer(accumulator,itemValue)                    2. newState=reducer(currentState,action)
+3. reduce method returns a single value                          3. useReducer returns a pair of values.[newState,dispatch]
+
+------------
+Steps:-
+step1:- import useReducer
+we have to call useReducer() function in functional component. eg:- useReducer(reducer,initialState)
+
+step2:- let's define the initialState and reducer function,we define them outside the component.
+const initialState=0;
+const reducer=(state,action)=>{
+    
+}
+here, In this example,we have three actions:-Increment,decrement,reset.
+const initialState = 0;
+const reducer = (state, action) => {    //this is the reducer function which is passed to the usereducer hook based on action value,the function will increment,decrement or reset the counter value. 
+  switch (action) {
+    case "increment":
+      return state + 1;
+    case "decrement":
+      return state + 1;
+    case "reset":
+      return initialState;
+    default:
+      return state;
+  }
+};
+
+step3:- we need to hold a value to display in the jsx and we also need a way to call the reducer function with the appropriate action.
+:- useReducer returns  a pair of values that we can get hold using the Array Destructuring.
+const [count,dispatch]=useReducer(reducer, initialState);
+here, usereducer returns the currentState that we have called as "count" paired with a dispatch method.
+:- this dispatch method allows us to execute the code corresponding to a particular action. 
+<button onClick={()=>dispatch('increment')}>Increment</button>
+<button onClick={()=>dispatch('decrement')}>Decrement</button>
+<button onClick={()=>dispatch('reset')}>Reset</button>
 
 
+Note:- If you are trying to manage primitive types like Number,String,Boolean, then useState is better option.
+    :- If you are trying to manage Object or array ,useReducer is better option.
+
+-----------------------------------------------------------------------------------------
+
+5. useCallback():-It is used to enhanced the performance of our app.
+:-useCallback and useMemo Hooks are similar,the difference is that useMemo returns a memoized value and useCallback returns a memoized function.
+Note:- React me jab v humara page re-render hota hai,to hamare function re-create hote h
+
+6.useMemo():-It is also used to enhanced the performance of our app.
+
+
+--------------------------------------------------------------------------------------
+7.useRef():-if you need to manage focus, text selection, trigger imperative animations or integrating third-party libraries.
+:- It can be used to access a DOM element directly.
+
+There are 3 steps to use useRef():-
+step1:- import useRef
+
+step2:- create a ref variable by calling useRef and passing in the initial Value.
+const inputRef=useRef(null)
+Now,once we create the ref,we need to attach it to the input element and to attach a ref,we make use of reserved "ref" attribute.
+<input type='text'ref={inputRef}/>
+
+step3:- call the focus method on the input element.
+
+-------------------------------------------------------------------------------------------
+8.Custom Hook:- A Custom Hook is basically a javascript function whose name starts with 'use'.
+:- A Custom Hook can also call other Hooks if required.
+
+:-why we use Custom Hook?
+:-To Share Logic-Alternative of HOCs and Render Props.
