@@ -1,0 +1,19 @@
+Hooks:- Hooks are new feature addition in react version 16.8 which allow you to use React feature without having class component.
+:- Hooks don't work inside classes.
+
+1.useState():- It accepts two argument, firstOne is the initial value of the state property and returns the current value of the state property,2nd is a method that is capable of updating the state property.
+ const [count,setCount]=useState(0)
+
+ :- setCount((prevCount) => prevCount + 1); //when you want to update state value based on previous state value ,then always go with passing in a function that will set the new state value.
+
+ Note:- onChange={(e) => setName({ ...name,firstName: e.target.value })} //copy every property in the name object and then just overwrite the firstName field with different value
+ It's bcoz , useState hook does not merge automatically (class component me hame merge nhi krna padta tha ,waha setter function hi kr deta tha)and update objects,we have to merge manually itself
+
+ ----------------------------------------------------------------------------------------
+
+ 2. useEffect():- The Effect hook lets you perform side effects in functional components.
+ It is a close replacement for componentDidMount(),componentDidUpdate() and componentWillUnmount().
+:- useEffect runs after every Render.
+
+
+
