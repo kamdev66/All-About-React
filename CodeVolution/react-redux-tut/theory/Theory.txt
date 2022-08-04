@@ -1,0 +1,140 @@
+Redux:- Redux is a predictable state container for javascript apps.
+here,state container means redux stores the state of your application.Redux will store and manage the application state.
+predictable means state of the application can change.the changes to your application's state become predictable.
+
+
+react-redux:- React-Redux is the official Redux UI binding library for react.It helps you to connect your react app with redux.
+
+----------------------------
+
+Three Core Concepts:-
+store:- A store that holds the state of your application.
+Action:- An action that describes the changes in the state of the application.
+Reducer:- A reducer which actually carries out the state transition depending on the action.
+
+:--------Cake shop scenerio:-
+Store=shop
+Action=Intention to BUY_CAKE
+Reducer=Shopkeeper
+
+-------------------------------------------
+
+Three Core Principles:-It describes the redux pattern
+1st:- The state of your whole application is stored in an object tree within a single store.
+{
+    numberOfCakes:10
+}
+2nd:- The only way to change the state is to emit an action,an object describing what happended.
+:-Not allowed to directly update the state object.
+eg:- Let the Shopkeeper know about our action-BUY_CAKE
+{
+    type:BUY_CAKE
+}
+3rd:- To specify how the state tree is transformed by actions,you write pure reducers.
+pre reducer are basically pure functions that takes the previous state and an action an input and returns the next state.
+eg:- Reducer- (previousState,action)=>newState
+const reducer=(state,action)=>{
+    switch(action.type){
+        case BUY_CAKE:return{
+            numberOfCakes:state.numberOfCakes+1;
+        }
+    }
+}
+
+--------------------------------------------------------------------
+
+Actions:- 
+:- The only way your application can interact with the store.
+:- Carry some information from your app to the redux store.
+:- Plain javascript objects
+:- Have a 'type' property that indicates the type of action being performed.
+:- The 'type' property is typically defined as string constants.
+
+eg:-
+const BUY_CAKE='BUY_CAKE';
+function buyCake(){
+    return {
+        type:BUY_CAKE,
+        info:'First redux action'
+    }
+}
+-------------------------------------------------------------------------
+
+reducers:- 
+:- Specify how the app's state changes in response to actions sent to the store.
+:- reducer is a function that accepts state and action as arguments,and returns the next state of the application.
+
+----------------------------------------------------------------------
+
+Redux Store:- 
+:- One store for the entire application.
+Responsibility:-
+->Holds application state
+->Allows access to state via getState()
+->Allows state to be updated via dispatch(action)
+->Registers listeners via subscribe(listener)  //here,subscribe method accepts a function as its parameter which is executed any time,the state in the redux store changes.
+->Handles unregistering of listeners via the function returned by subscribe(listener)
+
+-----------------------------------------------------------------------------------------
+
+Middleware:- It is a suggested way to extend Redux with custom functionality.
+:-Provides a third-party extension point between dispatching an action,and the moment it  reaches the reducer.
+:- Use Middleware for logging,crash reporting,performing asynchronus task etc.
+
+---------------------------------------------------------------------------------
+
+Async Actions:- asynchronus api calls to fetch data from an end point and use that data in your application.
+
+:-State in Async action:-
+state={
+    loading:true,
+    data:[],
+    error:' '
+}
+
+:- Action in async:-
+FETCH_USERS_REQUEST-fetch list of FETCH_USERS_REQUEST
+FETCH_USERS_SUCCESS-fetched successfully
+FETCH_USERS_FAILURE-error fetching the data
+
+:- Reducers in Async:-
+case:FETCH_USERS_REQUEST
+    loading:true
+case:FETCH_USERS_SUCCESS
+    loading:false
+    users:data(from API)
+case:FETCH_USERS_FAILURE
+    loading:false
+    error:error(from API)
+
+
+-------------------------------------------------------------------------------
+
+Async Action creator:-
+1. axios:- requests to an API end point
+2. redux-thunk:- Define async-action creators,it is a middleware.
+
+step1:- install both packages
+step2:- apply the redux-thunk middleware to our redux store.for that,at the top,first get hold of the apply middleware function from redux.
+now,in the createStore method pass it as a second aregument
+eg:-const applyMiddleware=redux.applyMiddleware
+const store=createStore(reducer,applyMiddleware())
+the argument to apply middleware will be the thunk middleware.so at the top,import thunk.
+const thunkMiddleware=require('redux-thunk').default
+and now,pass it as an argument to applyMiddleware
+
+
+------------------------------------------------------------------------
+
+mapStatetoProps:- It receives the redux state as its parameter which we can use as props in our component.
+The second parameter to mapStatetoProps is basically the props that have already been passed to the component.
+eg:- const mapStatetoProps=state=>{
+    return {
+        numOfCakes:state.cake.numofCakes
+    }
+}
+
+---------------------------------------------------------------------------
+
+mapDispatchToProps:-mapDispatchToProps is a function which accepts two parameters ,dispatch and ownProps.
+
