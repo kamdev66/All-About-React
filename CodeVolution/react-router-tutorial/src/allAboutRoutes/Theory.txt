@@ -1,0 +1,19 @@
+React Router:- It is a fully featured client and server side routing library for React.
+:-It helps to create and navigate between different URLs that make up your web application.
+:-It provides unique URLs for differnt components in the app and makes the UI easily shareable with other users.
+
+
+Steps for configuring Routes:-
+step1:-Connect the URL in the Browser with our react app.For that React-Router provides a component called <BrowserRouter/>,which we need to wrap our entire app.
+This allows us to use allthe features from react-Router.
+<BrowserRouter>
+      <App />
+</BrowserRouter>
+
+step2:-import {Routes,Route} from 'react-router-dom';
+within the Routes Component,we will define the individual route using the Route component.
+
+
+Active Link:-React Router Provides another component called 'NavLink' which knows whether our Link is active or not.
+
+
