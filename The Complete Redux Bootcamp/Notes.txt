@@ -1,0 +1,61 @@
+Redux:-
+:-Redux is a state management tool for javascript frameworks like react and angular.
+:-The main purpose of redux is control one component data from another component using reducers,acions.
+
+
+1st Step:- we have to create a separate file for our data which is called as reducer.
+so,whatever the data which is related to cart values ,we have to put in cartReducer.js.
+eg:- const initialData={
+    cartcount:0
+}
+and we can access this data in navbar.js and items.js by exporting cartReducer.js.
+
+:- to create the reducer , we have to create the function.
+In this function ,we have to give 2 parameters:- 1. data  2. action
+:-action means nothing but function which are used to change the cart count.
+
+NOTE:- i will import cartReducer function in app.js bcoz it is the parent of all child component.so, it will import automatically in every child component.
+
+
+now,we have to create the store.
+Store is nothing but the data where our reducer is present.
+
+NOTE:-- To tell the react-compiler that cartReducer.js is our store,we have to install redux and react-redux.
+
+Now for creating store,
+first we have to import the createStore module from the redux.
+
+now,to provide the data for specific component,we have to import "Provider" from react-redux.
+
+NOTE:-
+To access the data from any reducers or store,we have to import useSelector from react-redux.
+
+now,we have to create the action .
+
+
+NOTE:- To call the function in the reducer files,we have to import usedispatch .
+
+Let's RECAP ALL this CONCEP till here:-
+:- 1st step is creating the reducer file,reducer file is nothing but where we put all our data and the functions which are used to changed the data.
+:- In that reducer file,we have to create two things:- 1st thing is initial data that means before calling the function,which data you want to show on the scren.
+2nd thing is function,this function will accept two parameters:- state=initialData and action.
+:- action is nothing but the function in redux terminologies
+
+Now,we will make a store.
+we need to wrap our child component under Provider.we have to tell the provider that what name of our store is.
+
+:- To get the data from the store or reducers,we use hook called useSelector.
+:- To call the functions which are present in the reducer file,we use hook called useDispatch.
+
+
+
+---------1st Part Completed-----------2nd Part Start--------------------------
+
+
+
+
+
+
+
+
+
